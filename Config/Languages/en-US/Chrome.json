@@ -4,7 +4,6 @@
   "MessageBoxCancel": "Cancel",
   "MessageBoxYes": "Yes",
   "MessageBoxNo": "No",
-  "TitleBarSupportCreator": "Support the creator",
   "TitleBarOptions": "Options",
   "SettingsTitle": "Settings",
   "SettingsSave": "Save",
@@ -115,8 +114,6 @@
   "AboutVersionLabel": "Version:",
   "AboutAuthorLabel": "Author:",
   "AboutProjectLabel": "Project:",
-  "AboutDonationMessage": "Win11Debloat is a passion project that I maintain in my free time. If you've found this tool useful, please consider making a small donation to support its development. I really appreciate it!",
-  "AboutKofiLink": "Support me on Ko-fi",
 
   "AppSelectionWindowTitle": "Win11Debloat Application Selection",
   "AppSelectionWindowInstructions": "Check apps that you wish to remove, uncheck apps that you wish to keep",

@@ -159,14 +159,11 @@
                 <!-- Button Panel -->
                 <Border Style="{DynamicResource ModalFooterBorderStyle}">
                     <UniformGrid x:Name="ButtonPanel" Rows="1">
-                        <Button x:Name="ApplyKofiBtn"
+                        <Button x:Name="ApplyReportBtn"
+                                Visibility="Collapsed"
                                 Style="{DynamicResource ModalSecondaryStretchedButtonStyle}"
-                                AutomationProperties.Name="%LANG:TitleBarSupportCreator%">
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <TextBlock Text="&#xEB52;" FontFamily="{DynamicResource AppIconFontFamily}" FontSize="14" VerticalAlignment="Center" Margin="0,0,8,-1"/>
-                                <TextBlock Text="%LANG:TitleBarSupportCreator%" VerticalAlignment="Center" FontSize="14" Margin="0,0,0,1"/>
-                            </StackPanel>
-                        </Button>
+                                Content="%LANG:MenuReportBug%"
+                                AutomationProperties.Name="%LANG:MenuReportBug%"/>
                         <Button x:Name="ApplyCloseBtn"
                                 Style="{DynamicResource ModalPrimaryStretchedButtonStyle}"
                                 AutomationProperties.Name="%LANG:TitleBarClose%">

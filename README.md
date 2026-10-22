@@ -14,9 +14,6 @@ O script também inclui recursos úteis para administradores de sistemas e usuá
 
 ![Menu do Win11Debloat](/Assets/Images/menu.png)
 
-#### Este script foi útil para você? Considere me pagar um café para apoiar meu trabalho
-
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/M4M5C6UPC)
 
 ## Uso
 

@@ -4,7 +4,6 @@
   "MessageBoxCancel": "キャンセル",
   "MessageBoxYes": "はい",
   "MessageBoxNo": "いいえ",
-  "TitleBarSupportCreator": "開発者を支援",
   "TitleBarOptions": "オプション",
   "SettingsTitle": "設定",
   "SettingsSave": "保存",
@@ -115,8 +114,6 @@
   "AboutVersionLabel": "バージョン:",
   "AboutAuthorLabel": "作成者:",
   "AboutProjectLabel": "プロジェクト:",
-  "AboutDonationMessage": "Win11Debloat は私が余暇に情熱を注いでメンテナンスしているプロジェクトです。このツールが役立った場合は、開発を支援するための少額の寄付をご検討いただけると幸いです。ご支援に心より感謝いたします。",
-  "AboutKofiLink": "Ko-fi で支援する",
 
   "AppSelectionWindowTitle": "Win11Debloat アプリケーションの選択",
   "AppSelectionWindowInstructions": "削除したいアプリにチェックを付け、保持したいアプリのチェックを外してください",
