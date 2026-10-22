@@ -1,5 +1,9 @@
 # Win11Debloat
 
+[![Testes](https://github.com/walmirramos/Win11Debloat/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/walmirramos/Win11Debloat/actions/workflows/tests.yml)
+[![Licença MIT](https://img.shields.io/badge/Licen%C3%A7a-MIT-blue)](https://github.com/walmirramos/Win11Debloat/blob/master/LICENSE)
+[![Windows 10 e 11](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4)](https://github.com/walmirramos/Win11Debloat/wiki/How-To-Use)
+
 Versão em português brasileiro personalizada por **Dubbox** para organizar e ajustar o Windows 10 e o Windows 11.
 
 [![Documentação](https://img.shields.io/badge/Documentação-Wiki-blue)](https://github.com/walmirramos/Win11Debloat/wiki)
