@@ -92,7 +92,7 @@ function Show-MainWindow {
         $menuBtn.ContextMenu.IsOpen = $true
     })
 
-    $menuDocumentation.Add_Click({ Start-Process "https://github.com/Raphire/Win11Debloat/wiki" })
+    $menuDocumentation.Add_Click({ Start-Process "https://github.com/walmirramos/Win11Debloat/blob/traducao-pt-br/docs/pt-BR/README.md" })
     $menuReportBug.Add_Click({ Start-Process "https://github.com/Raphire/Win11Debloat/issues" })
 
     $menuLogs.Add_Click({
