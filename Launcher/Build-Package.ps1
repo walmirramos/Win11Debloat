@@ -53,7 +53,14 @@ Este executável ainda não possui assinatura digital. Não desative o antivíru
 Consulte CODE_SIGNING.md, PRIVACY.md e a Wiki para mais informações.
 SOURCE.json identifica o commit dos fontes e o SHA-256 do EXE.
 '@ | Set-Content -LiteralPath (Join-Path $package 'LEIA-ME-PRIMEIRO.txt') -Encoding UTF8
-    [IO.Compression.ZipFile]::CreateFromDirectory($stage,$temporaryArchive,[IO.Compression.CompressionLevel]::Optimal,$false)
+    $archive = [IO.Compression.ZipFile]::Open($temporaryArchive,[IO.Compression.ZipArchiveMode]::Create)
+    try {
+        foreach ($file in (Get-ChildItem -LiteralPath $stage -Recurse -File | Sort-Object FullName)) {
+            $entryName = $file.FullName.Substring($stage.Length + 1).Replace('\','/')
+            [void][IO.Compression.ZipFileExtensions]::CreateEntryFromFile($archive,$file.FullName,$entryName,[IO.Compression.CompressionLevel]::Optimal)
+        }
+    }
+    finally { $archive.Dispose() }
     $zip = [IO.Compression.ZipFile]::OpenRead($temporaryArchive)
     try {
         foreach ($entry in @('Win11Debloat/Win11Debloat.exe','Win11Debloat/Win11Debloat.ps1','Win11Debloat/SOURCE.json','Win11Debloat/Config/Languages/pt-BR/Chrome.json')) {
