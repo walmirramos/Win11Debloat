@@ -4,7 +4,7 @@ param(
     [version]$Version = '1.0.0.0'
 )
 $ErrorActionPreference = 'Stop'
-Add-Type -AssemblyName System.IO.Compression.FileSystem
+Add-Type -AssemblyName System.IO.Compression, System.IO.Compression.FileSystem
 $repositoryRoot = Split-Path $PSScriptRoot -Parent
 $uncommitted = @(& git -C $repositoryRoot status --porcelain)
 if ($LASTEXITCODE -ne 0 -or $uncommitted.Count) { throw 'Faça commit dos fontes antes de gerar o pacote para registrar sua origem corretamente.' }
