@@ -7,7 +7,7 @@
 Versão em português brasileiro personalizada por **Dubbox** para organizar e ajustar o Windows 10 e o Windows 11.
 
 [![Documentação](https://img.shields.io/badge/Documentação-Wiki-blue)](https://github.com/walmirramos/Win11Debloat/wiki)
-[![Download](https://img.shields.io/badge/Download-Versão%20em%20português-green)](https://github.com/walmirramos/Win11Debloat/archive/refs/heads/traducao-pt-br.zip)
+[![Download](https://img.shields.io/badge/Download-Versão%20em%20português-green)](https://github.com/walmirramos/Win11Debloat/releases/latest/download/Win11Debloat-com-EXE.zip)
 
 ## Sobre o projeto
 
@@ -19,11 +19,11 @@ Esta versão inclui interface e menus em pt-BR, documentação em português e l
 
 ## Como baixar e testar
 
-A versão traduzida está na branch **traducao-pt-br** enquanto o [pull request #1](https://github.com/walmirramos/Win11Debloat/pull/1) aguarda integração à branch principal.
+A versão portátil com EXE está disponível em [Releases](https://github.com/walmirramos/Win11Debloat/releases/latest).
 
-1. [Baixe o ZIP da versão em português](https://github.com/walmirramos/Win11Debloat/archive/refs/heads/traducao-pt-br.zip).
+1. [Baixe o ZIP da versão em português](https://github.com/walmirramos/Win11Debloat/releases/latest/download/Win11Debloat-com-EXE.zip).
 2. Extraia todo o conteúdo para uma nova pasta.
-3. Execute **Run.bat**.
+3. Execute **Win11Debloat.exe**. Você também pode usar o **Run.bat**.
 4. Confirme a solicitação de administrador.
 5. Confira as opções e o resumo antes de aplicar qualquer alteração.
 
