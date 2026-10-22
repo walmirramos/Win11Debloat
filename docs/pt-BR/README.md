@@ -1,4 +1,4 @@
-# Ajuda do Win11Debloat — Português do Brasil
+# Ajuda do Win11Debloat
 
 Projeto de Dubbox: [walmirramos/Win11Debloat](https://github.com/walmirramos/Win11Debloat).
 
@@ -14,6 +14,6 @@ Na página de ajustes, clique em **(?)** ao lado de uma categoria para abrir a s
 
 As opções disponíveis variam conforme a versão, edição e build do Windows. Algumas alterações precisam de reinicialização. Os arquivos do Registro são referências técnicas: prefira a interface do programa para aplicar e restaurar ajustes.
 
-## Origem da documentação
+## Sobre a documentação
 
-Esta documentação adapta para português brasileiro a [wiki do projeto original](https://github.com/Raphire/Win11Debloat/wiki/Features), usando os catálogos de idioma e as configurações presentes neste repositório. Os guias de uso e restauração resumem e adaptam as orientações originais. A licença e os créditos originais permanecem no [arquivo de licença](../../LICENSE).
+Esta documentação usa os catálogos em português e as configurações deste repositório. Consulte também o [arquivo de licença](../../LICENSE).

@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-Only the latest release and the current `master` branch are supported. Please verify that the issue exists in the [latest release](https://github.com/Raphire/Win11Debloat/releases/latest) before reporting it.
+Only the latest release and the current `master` branch are supported. Please verify that the issue exists in the [latest release](https://github.com/walmirramos/Win11Debloat/releases/latest) before reporting it.
 
 ## Reporting a Vulnerability
 
@@ -10,7 +10,7 @@ If you discover a security vulnerability, please report it privately through Git
 
 To submit a report:
 
-1. Go to the repository's [Security tab](https://github.com/Raphire/Win11Debloat/security).
+1. Go to the repository's [Security tab](https://github.com/walmirramos/Win11Debloat/security).
 2. Select **Report a vulnerability**.
 3. Describe the issue, including the affected version, steps to reproduce, and potential security impact.
 

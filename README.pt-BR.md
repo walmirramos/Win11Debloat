@@ -1,4 +1,4 @@
-# Win11Debloat — Português do Brasil
+# Win11Debloat
 
 Versão em português brasileiro personalizada por **Dubbox** para organizar e ajustar o Windows 10 e o Windows 11.
 
@@ -55,4 +55,4 @@ Revise os ajustes antes de aplicar. O backup do Registro pode recuperar configur
 Personalização e versão em português: **Dubbox**.  
 Projeto: [walmirramos/Win11Debloat](https://github.com/walmirramos/Win11Debloat).
 
-Baseado no projeto original [Raphire/Win11Debloat](https://github.com/Raphire/Win11Debloat). Distribuído sob a [licença MIT](LICENSE), com os avisos de direitos autorais originais preservados.
+Distribuído sob a [licença MIT](LICENSE), com os avisos de direitos autorais originais preservados.

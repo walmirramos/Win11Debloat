@@ -1,7 +1,7 @@
 # Recursos do Win11Debloat
 [Início da documentação](README.md) · [Recursos](Recursos.md) · [Restaurar alterações](Restaurar-alteracoes.md)
 
-Documentação em português brasileiro para a versão de Dubbox. As descrições abaixo usam o catálogo pt-BR e as configurações desta versão do projeto, a mesma base utilizada pela [página de recursos original](https://github.com/Raphire/Win11Debloat/wiki/Features). Os parâmetros e nomes de arquivos mantêm a grafia necessária para executar o programa.
+Documentação em português brasileiro para a versão de Dubbox. As descrições abaixo usam o catálogo pt-BR e as configurações desta versão do projeto. Os parâmetros e nomes de arquivos mantêm a grafia necessária para executar o programa.
 
 ## Índice
 

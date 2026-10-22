@@ -34,7 +34,7 @@ if defined wtPath (
 
 echo.
 echo Se precisar de ajuda, relate o problema em:
-echo https://github.com/Raphire/Win11Debloat/issues
+echo https://github.com/walmirramos/Win11Debloat/issues
 goto :EOF
 
 :: Logging Function
