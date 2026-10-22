@@ -6,11 +6,11 @@ Projeto original: [Raphire/Win11Debloat](https://github.com/Raphire/Win11Debloat
 
 [![Versão mais recente no GitHub](https://img.shields.io/github/v/release/Raphire/Win11Debloat?style=for-the-badge&label=Última%20versão)](https://github.com/Raphire/Win11Debloat/releases/latest)
 [![Participe da discussão](https://img.shields.io/badge/Participe-da%20discuss%C3%A3o-2D9F2D?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Raphire/Win11Debloat/discussions)
-[![Documentação](https://img.shields.io/badge/Documenta%C3%A7%C3%A3o-Wiki-grey?style=for-the-badge&logo=bookstack)](https://github.com/walmirramos/Win11Debloat/blob/traducao-pt-br/docs/pt-BR/README.md)
+[![Documentação](https://img.shields.io/badge/Documenta%C3%A7%C3%A3o-Wiki-grey?style=for-the-badge&logo=bookstack)](https://github.com/walmirramos/Win11Debloat/wiki)
 
 O Win11Debloat é um script simples e leve do PowerShell que permite organizar e personalizar sua experiência com o Windows, sem precisar instalar nada. Com ele, você pode remover aplicativos pré-instalados, desativar a telemetria, remover elementos indesejados da interface e muito mais. Você não precisa percorrer todas as configurações nem remover os aplicativos um por um: o Win11Debloat torna esse processo rápido e fácil!
 
-O script também inclui recursos úteis para administradores de sistemas e usuários avançados, como uma interface de linha de comando completa, suporte ao Modo de Auditoria do Windows e a possibilidade de fazer alterações para outras contas do Windows. Você também pode exportar e importar suas configurações preferidas para aplicá-las facilmente em vários computadores. Consulte nossa [wiki](https://github.com/walmirramos/Win11Debloat/blob/traducao-pt-br/docs/pt-BR/README.md) para saber mais.
+O script também inclui recursos úteis para administradores de sistemas e usuários avançados, como uma interface de linha de comando completa, suporte ao Modo de Auditoria do Windows e a possibilidade de fazer alterações para outras contas do Windows. Você também pode exportar e importar suas configurações preferidas para aplicá-las facilmente em vários computadores. Consulte nossa [wiki](https://github.com/walmirramos/Win11Debloat/wiki) para saber mais.
 
 ![Menu do Win11Debloat](/Assets/Images/menu.png)
 

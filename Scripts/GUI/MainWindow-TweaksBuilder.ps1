@@ -261,14 +261,14 @@ function New-DynamicTweakControls {
             System.String. The category URL, or the Features page for an empty category.
     #>
     function Get-WikiUrlForCategory($category) {
-        if (-not $category) { return 'https://github.com/walmirramos/Win11Debloat/blob/traducao-pt-br/docs/pt-BR/Recursos.md' }
+        if (-not $category) { return 'https://github.com/walmirramos/Win11Debloat/wiki/Features' }
 
         $slug = $category.ToLowerInvariant()
         $slug = $slug -replace '&', ''
         $slug = $slug -replace '[^a-z0-9\s-]', ''
         $slug = $slug -replace '\s', '-'
 
-        return "https://github.com/walmirramos/Win11Debloat/blob/traducao-pt-br/docs/pt-BR/Recursos.md#$slug"
+        return "https://github.com/walmirramos/Win11Debloat/wiki/Features#$slug"
     }
 
     <#

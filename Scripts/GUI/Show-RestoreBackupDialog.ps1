@@ -408,7 +408,7 @@ function Show-RestoreBackupDialog {
 
         $nonRevertibleWikiLink.Add_Click({
             try {
-                Start-Process 'https://github.com/walmirramos/Win11Debloat/blob/traducao-pt-br/docs/pt-BR/Restaurar-alteracoes.md' | Out-Null
+                Start-Process 'https://github.com/walmirramos/Win11Debloat/wiki/Reverting-Changes' | Out-Null
             }
             catch { }
         })
