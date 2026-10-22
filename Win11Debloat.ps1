@@ -231,26 +231,20 @@ if ($env:PATH -notmatch "(?i)(^|;)$([regex]::Escape($system32Path))(?=;|$)") {
     Write-Warning "System32 path was missing from PATH environment variable, it has been added for this session."
 }
 
-# Display ASCII art launch logo in CLI
+# Display the Windows 11 logo in the console.
 Write-Host ""
 Write-Host ""
-Write-Host "                   " -NoNewline; Write-Host "      ^" -ForegroundColor Blue
-Write-Host "                   " -NoNewline; Write-Host "     / \" -ForegroundColor Blue
-Write-Host "                   " -NoNewline; Write-Host "    /   \" -ForegroundColor Blue
-Write-Host "                   " -NoNewline; Write-Host "   /     \" -ForegroundColor Blue
-Write-Host "                   " -NoNewline; Write-Host "  / ===== \" -ForegroundColor Blue
-Write-Host "                   " -NoNewline; Write-Host "  |" -ForegroundColor Blue -NoNewline; Write-Host "  ---  " -ForegroundColor White -NoNewline; Write-Host "|" -ForegroundColor Blue
-Write-Host "                   " -NoNewline; Write-Host "  |" -ForegroundColor Blue -NoNewline; Write-Host " ( O ) " -ForegroundColor DarkCyan -NoNewline; Write-Host "|" -ForegroundColor Blue
-Write-Host "                   " -NoNewline; Write-Host "  |" -ForegroundColor Blue -NoNewline; Write-Host "  ---  " -ForegroundColor White -NoNewline; Write-Host "|" -ForegroundColor Blue
-Write-Host "                   " -NoNewline; Write-Host "  |       |" -ForegroundColor Blue
-Write-Host "                   " -NoNewline; Write-Host " /|       |\" -ForegroundColor Blue
-Write-Host "                   " -NoNewline; Write-Host "/ |       | \" -ForegroundColor Blue
-Write-Host "                   " -NoNewline; Write-Host "  |  " -ForegroundColor DarkGray -NoNewline; Write-Host "'''" -ForegroundColor Red -NoNewline; Write-Host "  |" -ForegroundColor DarkGray -NoNewline; Write-Host "    *" -ForegroundColor Yellow
-Write-Host "                   " -NoNewline; Write-Host "    (" -ForegroundColor Yellow -NoNewline; Write-Host "'''" -ForegroundColor Red -NoNewline; Write-Host ") " -ForegroundColor Yellow -NoNewline; Write-Host "   *  *" -ForegroundColor DarkYellow
-Write-Host "                   " -NoNewline; Write-Host "    ( " -ForegroundColor DarkYellow -NoNewline; Write-Host "'" -ForegroundColor Red -NoNewline; Write-Host " )   " -ForegroundColor DarkYellow -NoNewline; Write-Host "*" -ForegroundColor Yellow
+$launchLogoPane = ([string][char]0x2588) * 8
+1..4 | ForEach-Object {
+    Write-Host ("                   " + $launchLogoPane + "  " + $launchLogoPane) -ForegroundColor Blue
+}
 Write-Host ""
-Write-Host "             Win11Debloat is launching..." -ForegroundColor White
-Write-Host "                Keep this window open" -ForegroundColor DarkGray
+1..4 | ForEach-Object {
+    Write-Host ("                   " + $launchLogoPane + "  " + $launchLogoPane) -ForegroundColor Blue
+}
+Write-Host ""
+Write-Host "             Iniciando o Win11Debloat..." -ForegroundColor White
+Write-Host "                Mantenha esta janela aberta" -ForegroundColor DarkGray
 Write-Host ""
 Write-Host ""
 
