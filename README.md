@@ -1,54 +1,58 @@
 # Win11Debloat — Português do Brasil
 
-Esta versão usa português brasileiro por padrão na primeira execução. Para mudar o idioma, abra **Opções → Configurações → Idioma**. Preferências já salvas e o parâmetro `-Language` continuam tendo prioridade.
+Versão em português brasileiro personalizada por **Dubbox** para organizar e ajustar o Windows 10 e o Windows 11.
 
-Projeto original: [Raphire/Win11Debloat](https://github.com/Raphire/Win11Debloat). A documentação externa e as imagens do projeto original podem estar em inglês.
+[![Documentação](https://img.shields.io/badge/Documentação-Wiki-blue)](https://github.com/walmirramos/Win11Debloat/wiki)
+[![Download](https://img.shields.io/badge/Download-Versão%20em%20português-green)](https://github.com/walmirramos/Win11Debloat/archive/refs/heads/traducao-pt-br.zip)
 
-[![Versão mais recente no GitHub](https://img.shields.io/github/v/release/Raphire/Win11Debloat?style=for-the-badge&label=Última%20versão)](https://github.com/Raphire/Win11Debloat/releases/latest)
-[![Participe da discussão](https://img.shields.io/badge/Participe-da%20discuss%C3%A3o-2D9F2D?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Raphire/Win11Debloat/discussions)
-[![Documentação](https://img.shields.io/badge/Documenta%C3%A7%C3%A3o-Wiki-grey?style=for-the-badge&logo=bookstack)](https://github.com/walmirramos/Win11Debloat/wiki)
+## Sobre o projeto
 
-O Win11Debloat é um script simples e leve do PowerShell que permite organizar e personalizar sua experiência com o Windows, sem precisar instalar nada. Com ele, você pode remover aplicativos pré-instalados, desativar a telemetria, remover elementos indesejados da interface e muito mais. Você não precisa percorrer todas as configurações nem remover os aplicativos um por um: o Win11Debloat torna esse processo rápido e fácil!
+O Win11Debloat é um script PowerShell que permite remover aplicativos pré-instalados, ajustar opções de privacidade, desativar telemetria e personalizar elementos da interface do Windows.
 
-O script também inclui recursos úteis para administradores de sistemas e usuários avançados, como uma interface de linha de comando completa, suporte ao Modo de Auditoria do Windows e a possibilidade de fazer alterações para outras contas do Windows. Você também pode exportar e importar suas configurações preferidas para aplicá-las facilmente em vários computadores. Consulte nossa [wiki](https://github.com/walmirramos/Win11Debloat/wiki) para saber mais.
+Esta versão inclui interface e menus em pt-BR, documentação em português e links de ajuda para a Wiki deste repositório. A disponibilidade de cada ajuste depende da versão e edição do Windows.
 
-![Menu do Win11Debloat](/Assets/Images/menu.png)
+![Interface do Win11Debloat em português brasileiro](https://raw.githubusercontent.com/walmirramos/Win11Debloat/traducao-pt-br/Assets/Images/menu.png)
 
+## Como baixar e testar
 
-## Uso
+A versão traduzida está na branch **traducao-pt-br** enquanto o [pull request #1](https://github.com/walmirramos/Win11Debloat/pull/1) aguarda integração à branch principal.
 
-> [!WARNING]
-> Este script foi desenvolvido com cuidado para evitar alterações indesejadas nas funções do sistema operacional, mas use-o por sua conta e risco. Se encontrar algum problema, relate-o [aqui](https://github.com/Raphire/Win11Debloat/issues).
+1. [Baixe o ZIP da versão em português](https://github.com/walmirramos/Win11Debloat/archive/refs/heads/traducao-pt-br.zip).
+2. Extraia todo o conteúdo para uma nova pasta.
+3. Execute **Run.bat**.
+4. Confirme a solicitação de administrador.
+5. Confira as opções e o resumo antes de aplicar qualquer alteração.
 
-### Método rápido
+Abrir a interface não aplica os ajustes automaticamente. Se houver uma preferência de idioma salva, escolha português brasileiro em **Opções → Configurações → Idioma**.
 
-Baixe e execute o script automaticamente pelo PowerShell.
+## Documentação e dúvidas
 
-1. Abra o PowerShell ou o Terminal.
-2. Copie e cole o comando abaixo no PowerShell:
+Consulte a [Wiki em português](https://github.com/walmirramos/Win11Debloat/wiki):
 
-```PowerShell
-# Baixe esta versão em português brasileiro:
-Invoke-WebRequest -Uri "https://github.com/walmirramos/Win11Debloat/archive/refs/heads/master.zip" -OutFile "$env:TEMP\Win11Debloat-pt-BR.zip"
-Expand-Archive -LiteralPath "$env:TEMP\Win11Debloat-pt-BR.zip" -DestinationPath "$env:TEMP\Win11Debloat-pt-BR" -Force
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$env:TEMP\Win11Debloat-pt-BR\Win11Debloat-master\Win11Debloat.ps1" -Language pt-BR
-```
+- [Como usar](https://github.com/walmirramos/Win11Debloat/wiki/How-To-Use)
+- [Recursos e ajustes do sistema](https://github.com/walmirramos/Win11Debloat/wiki/Features)
+- [Remoção de aplicativos](https://github.com/walmirramos/Win11Debloat/wiki/App-Removal)
+- [Restaurar alterações](https://github.com/walmirramos/Win11Debloat/wiki/Reverting-Changes)
+- [Importar e exportar configurações](https://github.com/walmirramos/Win11Debloat/wiki/Importing-&-Exporting-Configuration)
+- [Linha de comando](https://github.com/walmirramos/Win11Debloat/wiki/Command-line-Interface)
 
-3. Se o Windows solicitar, confirme a execução como administrador.
-4. Na interface, selecione as alterações desejadas e confira o resumo antes de aplicar.
+## Linha de comando
 
-### Download manual
-
-1. Clique em **Code → Download ZIP** neste repositório.
-2. Extraia todos os arquivos do ZIP para uma pasta.
-3. Execute `Run.bat` e confirme a solicitação de administrador.
-
-### Linha de comando
-
-No Windows PowerShell 5.1 aberto como administrador, acesse a pasta extraída e execute:
+No **Windows PowerShell 5.1**, aberto como administrador na pasta extraída:
 
 ```powershell
 .\Win11Debloat.ps1 -Language pt-BR -CLI
 ```
 
-Nas confirmações em português, use `s` para sim e `n` para não. Os nomes dos parâmetros, identificadores de aplicativos e arquivos de configuração mantêm sua grafia original para preservar a compatibilidade.
+Nas confirmações traduzidas, use **s** para sim e **n** para não. Os nomes de parâmetros e identificadores técnicos mantêm a grafia original.
+
+## Restauração
+
+Revise os ajustes antes de aplicar. O backup do Registro pode recuperar configurações alteradas, mas não reinstala aplicativos removidos. Veja o [guia de restauração](https://github.com/walmirramos/Win11Debloat/wiki/Reverting-Changes).
+
+## Autoria e licença
+
+Personalização e versão em português: **Dubbox**.  
+Projeto: [walmirramos/Win11Debloat](https://github.com/walmirramos/Win11Debloat).
+
+Baseado no projeto original [Raphire/Win11Debloat](https://github.com/Raphire/Win11Debloat). Distribuído sob a [licença MIT](LICENSE), com os avisos de direitos autorais originais preservados.
