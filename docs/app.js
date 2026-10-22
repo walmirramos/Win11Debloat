@@ -4,14 +4,20 @@ function applyTheme(dark) {
   document.body.classList.toggle('dark', dark);
   themeButton.setAttribute('aria-label', dark ? 'Ativar tema claro' : 'Ativar tema escuro');
   themeButton.setAttribute('aria-pressed', String(dark));
+  document.getElementById('theme-label').textContent = dark ? 'Claro' : 'Escuro';
   document.querySelector('meta[name="theme-color"]').content = dark ? '#0c1422' : '#f5f7fb';
 }
 let savedTheme = null;
 try { savedTheme = localStorage.getItem('dubbox-site-theme'); } catch (_) {}
-applyTheme(savedTheme === 'dark');
+const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+applyTheme(savedTheme === 'dark' || (savedTheme !== 'light' && systemTheme.matches));
+systemTheme.addEventListener('change', event => {
+  if (savedTheme !== 'light' && savedTheme !== 'dark') applyTheme(event.matches);
+});
 themeButton.addEventListener('click', () => {
   const dark = !document.body.classList.contains('dark');
   applyTheme(dark);
+  savedTheme = dark ? 'dark' : 'light';
   try { localStorage.setItem('dubbox-site-theme', dark ? 'dark' : 'light'); } catch (_) {}
 });
 const menuButton = document.getElementById('menu');
