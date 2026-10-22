@@ -4,13 +4,13 @@ function Write-CliHeader {
         $title
     )
 
-    $fullTitle = " Win11Debloat Script - $title"
+    $fullTitle = " Script Win11Debloat - $title"
 
     if ($script:Params.ContainsKey("Sysprep")) {
-        $fullTitle = "$fullTitle (Sysprep mode)"
+        $fullTitle = "$fullTitle (Modo Sysprep)"
     }
     else {
-        $fullTitle = "$fullTitle (User: $(Get-UserName))"
+        $fullTitle = "$fullTitle (Usuário: $(Get-UserName))"
     }
 
     Clear-Host

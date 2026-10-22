@@ -3,7 +3,7 @@
         Reads saved UI theme and language preferences.
 
     .DESCRIPTION
-        Uses Auto when no valid saved theme or language preference is available.
+        Defaults to the system theme and Brazilian Portuguese when no valid preference is available.
         UI preferences are separate from exported debloat configurations.
 
     .PARAMETER Path
@@ -14,7 +14,7 @@
 #>
 function Get-UiPreferences {
     param([string]$Path = $script:UiPreferencesFilePath)
-    $preferences = @{ Theme = 'Auto'; Language = 'Auto' }
+    $preferences = @{ Theme = 'Auto'; Language = 'pt-BR' }
     if (Test-Path -LiteralPath $Path) {
         try {
             $saved = Get-Content -LiteralPath $Path -Raw -Encoding UTF8 | ConvertFrom-Json

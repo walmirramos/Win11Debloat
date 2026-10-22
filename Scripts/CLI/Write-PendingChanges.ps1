@@ -13,7 +13,7 @@
         Enter, giving them an opportunity to review and cancel via Ctrl+C.
 #>
 function Write-PendingChanges {
-    Write-Output "Win11Debloat will make the following changes:"
+    Write-Output "O Win11Debloat fará as seguintes alterações:"
 
     if ($script:Params['CreateRestorePoint']) {
         Write-Output "- $($script:Features['CreateRestorePoint'].Label)"
@@ -35,12 +35,12 @@ function Write-PendingChanges {
                 $appsList = Generate-AppsList
 
                 if ($appsList.Count -eq 0) {
-                    Write-Host "No valid apps were selected for removal" -ForegroundColor Yellow
+                    Write-Host "Nenhum aplicativo válido foi selecionado para remoção" -ForegroundColor Yellow
                     Write-Output ""
                     continue
                 }
 
-                Write-Output "- Remove $($appsList.Count) apps:"
+                Write-Output "- Remover $($appsList.Count) aplicativos:"
                 Write-Host $appsList -ForegroundColor DarkGray
                 continue
             }
@@ -54,6 +54,6 @@ function Write-PendingChanges {
 
     Write-Output ""
     Write-Output ""
-    Write-Output "Press enter to execute the script or press CTRL+C to quit..."
+    Write-Output "Pressione Enter para executar o script ou CTRL+C para sair..."
     Read-Host | Out-Null
 }

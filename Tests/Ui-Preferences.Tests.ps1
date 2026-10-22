@@ -50,10 +50,10 @@ Describe 'UI preference initialization' {
 }
 
 Describe 'UI preference persistence and theme resolution' {
-    It 'defaults to system settings when no preferences exist' {
+    It 'defaults to Brazilian Portuguese and the system theme when no preferences exist' {
         $result = Get-UiPreferences -Path "$TestDrive/missing.json"
         $result.Theme | Should -Be 'Auto'
-        $result.Language | Should -Be 'Auto'
+        $result.Language | Should -Be 'pt-BR'
     }
     It 'round trips explicit preferences' {
         Save-UiPreferences -Preferences @{Theme='Dark'; Language='pt-BR'} -Path "$TestDrive/preferences.json"
@@ -65,7 +65,7 @@ Describe 'UI preference persistence and theme resolution' {
         '{"Theme":"Unknown","Language":"../other"}' | Set-Content "$TestDrive/invalid.json"
         $result = Get-UiPreferences -Path "$TestDrive/invalid.json"
         $result.Theme | Should -Be 'Auto'
-        $result.Language | Should -Be 'Auto'
+        $result.Language | Should -Be 'pt-BR'
     }
     It 'keeps the previous settings when writing fails' {
         Save-UiPreferences -Preferences @{Theme='Light'; Language='en-US'} -Path "$TestDrive/safe.json"

@@ -25,15 +25,15 @@ set "SCRIPT_PATH=%~dp0Win11Debloat.ps1"
 
 if defined wtPath (
     call :Log Launching Win11Debloat.ps1 with Windows Terminal...
-    PowerShell -NoProfile -ExecutionPolicy Bypass -Command "$p='%SCRIPT_PATH:'=''%'; $w='%wtPath:'=''%'; $q=[char]34; Start-Process -FilePath $w -ArgumentList ('PowerShell -NoProfile -ExecutionPolicy Bypass -File ' + $q + $p + $q) -Verb RunAs" >> "%logFile%" || call :Error "PowerShell command failed"
+    PowerShell -NoProfile -ExecutionPolicy Bypass -Command "$p='%SCRIPT_PATH:'=''%'; $w='%wtPath:'=''%'; $q=[char]34; Start-Process -FilePath $w -ArgumentList ('PowerShell -NoProfile -ExecutionPolicy Bypass -File ' + $q + $p + $q) -Verb RunAs" >> "%logFile%" || call :Error "Falha no comando do PowerShell"
 ) else (
-    echo Windows Terminal not found, using default PowerShell...
+    echo Windows Terminal nao encontrado. Usando o PowerShell padrao...
     call :Log Windows Terminal not found. Using default PowerShell to launch Win11Debloat.ps1...
-    PowerShell -NoProfile -ExecutionPolicy Bypass -Command "$p='%SCRIPT_PATH:'=''%'; $q=[char]34; Start-Process PowerShell -ArgumentList ('-NoProfile -ExecutionPolicy Bypass -File ' + $q + $p + $q) -Verb RunAs" >> "%logFile%" || call :Error "PowerShell command failed"
+    PowerShell -NoProfile -ExecutionPolicy Bypass -Command "$p='%SCRIPT_PATH:'=''%'; $q=[char]34; Start-Process PowerShell -ArgumentList ('-NoProfile -ExecutionPolicy Bypass -File ' + $q + $p + $q) -Verb RunAs" >> "%logFile%" || call :Error "Falha no comando do PowerShell"
 )
 
 echo.
-echo If you need further assistance, please open an issue at:
+echo Se precisar de ajuda, relate o problema em:
 echo https://github.com/Raphire/Win11Debloat/issues
 goto :EOF
 
@@ -46,6 +46,6 @@ goto :EOF
 :Error
 echo(ERROR: %*
 call :Log ERROR: %*
-echo Logged in %logFile%
+echo Registro salvo em %logFile%
 pause
 goto :EOF

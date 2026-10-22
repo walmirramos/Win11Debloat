@@ -1,4 +1,8 @@
-# Win11Debloat
+# Win11Debloat — Português do Brasil
+
+Esta versão usa português brasileiro por padrão na primeira execução. Para mudar o idioma, abra **Opções → Configurações → Idioma**. Preferências já salvas e o parâmetro `-Language` continuam tendo prioridade.
+
+Projeto original: [Raphire/Win11Debloat](https://github.com/Raphire/Win11Debloat). A documentação externa e as imagens do projeto original podem estar em inglês.
 
 [![Versão mais recente no GitHub](https://img.shields.io/github/v/release/Raphire/Win11Debloat?style=for-the-badge&label=Última%20versão)](https://github.com/Raphire/Win11Debloat/releases/latest)
 [![Participe da discussão](https://img.shields.io/badge/Participe-da%20discuss%C3%A3o-2D9F2D?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Raphire/Win11Debloat/discussions)
@@ -27,4 +31,27 @@ Baixe e execute o script automaticamente pelo PowerShell.
 2. Copie e cole o comando abaixo no PowerShell:
 
 ```PowerShell
-& ([scriptblock]::Create((irm "https://debloat.raphi.re/")))
+# Baixe esta versão em português brasileiro:
+Invoke-WebRequest -Uri "https://github.com/walmirramos/Win11Debloat/archive/refs/heads/master.zip" -OutFile "$env:TEMP\Win11Debloat-pt-BR.zip"
+Expand-Archive -LiteralPath "$env:TEMP\Win11Debloat-pt-BR.zip" -DestinationPath "$env:TEMP\Win11Debloat-pt-BR" -Force
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$env:TEMP\Win11Debloat-pt-BR\Win11Debloat-master\Win11Debloat.ps1" -Language pt-BR
+```
+
+3. Se o Windows solicitar, confirme a execução como administrador.
+4. Na interface, selecione as alterações desejadas e confira o resumo antes de aplicar.
+
+### Download manual
+
+1. Clique em **Code → Download ZIP** neste repositório.
+2. Extraia todos os arquivos do ZIP para uma pasta.
+3. Execute `Run.bat` e confirme a solicitação de administrador.
+
+### Linha de comando
+
+No Windows PowerShell 5.1 aberto como administrador, acesse a pasta extraída e execute:
+
+```powershell
+.\Win11Debloat.ps1 -Language pt-BR -CLI
+```
+
+Nas confirmações em português, use `s` para sim e `n` para não. Os nomes dos parâmetros, identificadores de aplicativos e arquivos de configuração mantêm sua grafia original para preservar a compatibilidade.
