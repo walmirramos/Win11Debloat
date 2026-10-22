@@ -10,6 +10,10 @@ No Windows PowerShell, execute `Launcher/Build-Launcher.ps1` na pasta do projeto
 
 ## Distribuir e executar
 
+Para gerar o ZIP e os hashes, use `Launcher/Build-Package.ps1 -Version 1.0.0.0`. Os arquivos são gravados em `artifacts/`, que não entra no Git. Faça commit das alterações antes de gerar um pacote. A rotina verifica os arquivos, os argumentos do iniciador e a versão, sem executar o script de ajustes do Windows.
+
+O workflow **Build portable EXE** compila automaticamente alterações na branch `traducao-pt-br` e também pode ser executado manualmente pela aba Actions. Os pacotes de teste ficam nos artefatos da execução por 30 dias. Eles não são publicados como uma Release automaticamente.
+
 Extraia o ZIP inteiro para uma pasta. Execute Win11Debloat.exe e confirme a solicitação de administrador. Mantenha as pastas Assets, Config, Regfiles, Schemas e Scripts junto do EXE.
 
 O executável não possui assinatura digital. O Windows pode exibir um aviso de editor desconhecido ou de reputação, e produtos de segurança podem apresentar falsos positivos. Não é possível garantir aceitação por todos os antivírus. Não desative a proteção do computador para executar este programa.
