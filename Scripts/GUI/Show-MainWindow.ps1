@@ -94,8 +94,8 @@ function Show-MainWindow {
         $menuBtn.ContextMenu.IsOpen = $true
     })
 
-    $menuDocumentation.Add_Click({ Start-Process "https://github.com/Raphire/Win11Debloat/wiki" })
-    $menuReportBug.Add_Click({ Start-Process "https://github.com/Raphire/Win11Debloat/issues" })
+    $menuDocumentation.Add_Click({ Start-Process "https://github.com/walmirramos/Win11Debloat/wiki" })
+    $menuReportBug.Add_Click({ Start-Process "https://github.com/walmirramos/Win11Debloat/issues" })
 
     $menuLogs.Add_Click({
         $logsFolder = Split-Path -Parent $script:DefaultLogPath

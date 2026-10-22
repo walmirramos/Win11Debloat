@@ -2,15 +2,15 @@
 
 We welcome contributions from the community. You can contribute to Win11Debloat by:
 
-- Reporting issues and bugs [here](https://github.com/Raphire/Win11Debloat/issues/new?template=bug_report.yml)
-- Submitting feature requests [here](https://github.com/Raphire/Win11Debloat/issues/new?template=feature_request.yml)
+- Reporting issues and bugs [here](https://github.com/walmirramos/Win11Debloat/issues/new?template=bug_report.yml)
+- Submitting feature requests [here](https://github.com/walmirramos/Win11Debloat/issues/new?template=feature_request.yml)
 - Testing Win11Debloat
 - Creating a pull request
 - Improving the documentation
 
 # Testing Win11Debloat
 
-You can help us test the latest changes and additions to the script. If you encounter any issues, please report them [here](https://github.com/Raphire/Win11Debloat/issues/new?template=bug_report.yml).
+You can help us test the latest changes and additions to the script. If you encounter any issues, please report them [here](https://github.com/walmirramos/Win11Debloat/issues/new?template=bug_report.yml).
 
 > [!WARNING]
 > The prerelease version of Win11Debloat is meant for developers to test the script. Don't use this in production environments!
@@ -18,7 +18,7 @@ You can help us test the latest changes and additions to the script. If you enco
 You can launch the prerelease version of Win11Debloat by running this command:
 
 ```ps1
-& ([scriptblock]::Create((irm "https://debloat.raphi.re/"))) -Dev
+.\Win11Debloat.ps1 -Language pt-BR -CLI
 ```
 
 # Contributing Code
@@ -94,7 +94,7 @@ Win11Debloat is a PowerShell script with a WPF (Windows Presentation Foundation)
 * `Run.bat` launches a locally downloaded copy of `Win11Debloat.ps1`.
 * `Get.ps1` downloads Win11Debloat and launches `Win11Debloat.ps1`.
 
-Both `Get.ps1` and `Win11Debloat.ps1` support [command-line parameters](https://github.com/Raphire/Win11Debloat/wiki/Command-Line-Interface), allowing Win11Debloat to be configured and run without using the GUI.
+Both `Get.ps1` and `Win11Debloat.ps1` support [command-line parameters](https://github.com/walmirramos/Win11Debloat/wiki/Command-Line-Interface), allowing Win11Debloat to be configured and run without using the GUI.
 
 ### High-Level Architecture
 
@@ -509,6 +509,6 @@ A new language is its own pull request, not something bundled with unrelated cha
 
 If you have questions about contributing, feel free to:
 
-- Open a [discussion](https://github.com/Raphire/Win11Debloat/discussions)
+- Open a [discussion](https://github.com/walmirramos/Win11Debloat/discussions)
 - Comment on an existing issue
 - Ask in your pull request

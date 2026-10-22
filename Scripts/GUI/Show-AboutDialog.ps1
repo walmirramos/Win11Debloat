@@ -69,7 +69,7 @@ function Show-AboutDialog {
     
     # Project link click handler
     $projectLink.Add_Click({
-        Start-Process "https://github.com/Raphire/Win11Debloat"
+        Start-Process "https://github.com/walmirramos/Win11Debloat"
     })
     
     # Ko-fi link click handler
