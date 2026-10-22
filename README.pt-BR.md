@@ -60,3 +60,7 @@ Personalização e versão em português: **Dubbox**.
 Projeto: [walmirramos/Win11Debloat](https://github.com/walmirramos/Win11Debloat).
 
 Distribuído sob a [licença MIT](LICENSE), com os avisos de direitos autorais originais preservados.
+
+## Code signing policy
+
+O executável atual ainda não possui assinatura digital. A candidatura ao SignPath está em análise. Consulte a [política de assinatura](CODE_SIGNING.md) e a [política de privacidade](PRIVACY.md).
