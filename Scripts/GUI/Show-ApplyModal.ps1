@@ -69,7 +69,7 @@ function Show-ApplyModal {
     $applyRebootPanel = $applyWindow.FindName('ApplyRebootPanel')
     $applyRebootList = $applyWindow.FindName('ApplyRebootList')
     $applyCloseBtn = $applyWindow.FindName('ApplyCloseBtn')
-    $applyKofiBtn = $applyWindow.FindName('ApplyKofiBtn')
+    $applyReportBtn = $applyWindow.FindName('ApplyReportBtn')
     $applyCancelBtn = $applyWindow.FindName('ApplyCancelBtn')
     
     # Initialize in-progress state
@@ -210,11 +210,12 @@ function Show-ApplyModal {
             $script:ApplyCompletionTitleEl.Text = Get-Translation -Key 'ApplyCompletionTitleError'
             $script:ApplyCompletionMessageEl.Text = Get-Translation -Key 'ApplyCompletionMessageError' -FormatArgs @($_.Exception.Message)
 
-            # Set error state to change Kofi button to report link
+            # Enable the report link in the error state
             $script:ApplyModalInErrorState = $true
 
-            # Update Kofi button to be a report issue button
-            $applyKofiBtn.Content = $null
+            # Show the report issue button
+            $applyReportBtn.Visibility = 'Visible'
+            $applyReportBtn.Content = $null
 
             $reportText = [System.Windows.Controls.TextBlock]::new()
             $reportText.Text = Get-Translation -Key 'MenuReportBug'
@@ -222,9 +223,9 @@ function Show-ApplyModal {
             $reportText.FontSize = 14
             $reportText.Margin = [System.Windows.Thickness]::new(0, 0, 0, 1)
 
-            $applyKofiBtn.Content = $reportText
+            $applyReportBtn.Content = $reportText
 
-            [System.Windows.Automation.AutomationProperties]::SetName($applyKofiBtn, (Get-Translation -Key 'MenuReportBug'))
+            [System.Windows.Automation.AutomationProperties]::SetName($applyReportBtn, (Get-Translation -Key 'MenuReportBug'))
             
             $applyWindow.Dispatcher.Invoke([System.Windows.Threading.DispatcherPriority]::Render, [action]{})
         }
@@ -239,12 +240,8 @@ function Show-ApplyModal {
         $applyWindow.Close()
     })
 
-    $applyKofiBtn.Add_Click({
-        if ($script:ApplyModalInErrorState) {
-            Start-Process "https://github.com/walmirramos/Win11Debloat/issues/new"
-        } else {
-            Start-Process "https://ko-fi.com/raphire"
-        }
+    $applyReportBtn.Add_Click({
+        Start-Process "https://github.com/walmirramos/Win11Debloat"
     })
 
     $applyCancelBtn.Add_Click({

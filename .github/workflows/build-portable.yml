@@ -1,0 +1,56 @@
+name: Build portable EXE
+
+on:
+  push:
+    branches: [traducao-pt-br]
+    paths:
+      - 'Launcher/**'
+      - 'Scripts/**'
+      - 'Schemas/**'
+      - 'Config/**'
+      - 'Regfiles/**'
+      - 'Assets/**'
+      - 'Win11Debloat.ps1'
+      - '.github/workflows/build-portable.yml'
+      - 'CODE_SIGNING.md'
+      - 'PRIVACY.md'
+  pull_request:
+    paths: ['Launcher/**', '.github/workflows/build-portable.yml']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Versão numérica do EXE (exemplo: 1.0.0.0)'
+        required: true
+        default: '1.0.0.0'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Test, compile and package
+    runs-on: windows-latest
+    timeout-minutes: 20
+    env:
+      PACKAGE_VERSION: ${{ inputs.version || '1.0.0.0' }}
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Run Pester tests
+        shell: powershell
+        run: ./Scripts/Run-Tests.ps1 -Bootstrap
+      - name: Compile launcher and verify portable package
+        shell: powershell
+        run: ./Launcher/Build-Package.ps1 -Version $env:PACKAGE_VERSION
+      - name: Upload unsigned portable package
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: Win11Debloat-portable-${{ github.sha }}
+          path: |
+            artifacts/Win11Debloat-com-EXE.zip
+            artifacts/Win11Debloat-SHA256.txt
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 0

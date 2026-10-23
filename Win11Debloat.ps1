@@ -110,9 +110,9 @@ param (
 # Appx module fails with "Operation is not supported on this platform" (0x80131539). Without this guard
 # the run continues and silently fails to remove any apps while still reporting success. See issue #675.
 if ($PSVersionTable.PSEdition -eq 'Core') {
-    Write-Host "Win11Debloat requires Windows PowerShell 5.1, but it is running under PowerShell $($PSVersionTable.PSVersion) (pwsh / Core edition)." -ForegroundColor Red
-    Write-Host "App removal and system restore points rely on modules that are not available in PowerShell 7, so the run cannot complete correctly here." -ForegroundColor Red
-    Write-Host "Please re-run this script with Windows PowerShell instead (powershell.exe)." -ForegroundColor Yellow
+    Write-Host "O Win11Debloat requer o Windows PowerShell 5.1, mas está sendo executado no PowerShell $($PSVersionTable.PSVersion) (pwsh / edição Core)." -ForegroundColor Red
+    Write-Host "A remoção de aplicativos e os pontos de restauração dependem de módulos indisponíveis no PowerShell 7. A execução não pode ser concluída corretamente nesta versão." -ForegroundColor Red
+    Write-Host "Execute este script novamente no Windows PowerShell (powershell.exe)." -ForegroundColor Yellow
     exit 1
 }
 
@@ -123,11 +123,11 @@ $isAdmin = ([Security.Principal.WindowsPrincipal] `
 
 # If script is not running as administrator ask user if they want to allow it
 if (-not $isAdmin) {
-    Write-Host "Win11Debloat must be run as Administrator." -ForegroundColor Red
+    Write-Host "O Win11Debloat deve ser executado como administrador." -ForegroundColor Red
 
-    $choice = Read-Host "Restart as Administrator? (y/n)"
+    $choice = Read-Host "Reiniciar como administrador? (s/n)"
 
-    if ($choice -match '^[Yy]$') {
+    if ($choice -match '^[SsYy]$') {
         # Win32-safe escaping for arguments to pass to elevated process
         function Format-ElevatedArg([string]$Value) {
             $escaped = $Value -replace '(\\*)"', '$1$1\"'
@@ -161,7 +161,7 @@ if (-not $isAdmin) {
             Start-Process powershell -ArgumentList $elevatedArgs -Verb RunAs -ErrorAction Stop
         }
         catch {
-            Write-Error "Failed to start Win11Debloat as Administrator: $_"
+            Write-Error "Falha ao iniciar o Win11Debloat como administrador: $_"
             Exit 1
         }
 
@@ -216,8 +216,8 @@ $script:AppRemovalVerificationUnavailable = $false
 
 # Check if current PowerShell environment is limited by security policies
 if ($ExecutionContext.SessionState.LanguageMode -ne "FullLanguage") {
-    Write-Error "Win11Debloat is unable to run on your system, PowerShell execution is restricted by security policies"
-    Write-Output "Press any key to exit..."
+    Write-Error "O Win11Debloat não pode ser executado: políticas de segurança restringem a execução do PowerShell"
+    Write-Output "Pressione qualquer tecla para sair..."
     $null = [System.Console]::ReadKey()
     Exit 1
 }
@@ -228,7 +228,7 @@ Clear-Host
 $system32Path = "$env:SystemRoot\System32"
 if ($env:PATH -notmatch "(?i)(^|;)$([regex]::Escape($system32Path))(?=;|$)") {
     $env:PATH = "$env:SystemRoot\System32;$env:SystemRoot;" + $env:PATH
-    Write-Warning "System32 path was missing from PATH environment variable, it has been added for this session."
+    Write-Warning "O caminho System32 não estava na variável PATH e foi adicionado para esta sessão."
 }
 
 # Display the Windows 11 logo in the console.
@@ -273,15 +273,15 @@ if (-not $WhatIfPreference) {
             })
 
         if ($markedScriptFiles.Count -gt 0) {
-            Write-Host "Unblocking $($markedScriptFiles.Count) PowerShell file(s)..."
+            Write-Host "Desbloqueando $($markedScriptFiles.Count) arquivo(s) do PowerShell..."
             $unblockErrors = @()
             $markedScriptFiles | Unblock-File -ErrorAction SilentlyContinue -ErrorVariable +unblockErrors
 
             if ($unblockErrors.Count -gt 0) {
-                Write-Warning "Failed to unblock $($unblockErrors.Count) PowerShell file(s)."
+                Write-Warning "Falha ao desbloquear $($unblockErrors.Count) arquivo(s) do PowerShell."
             }
             else {
-                Write-Host "All files were unblocked successfully."
+                Write-Host "Todos os arquivos foram desbloqueados com sucesso."
             }
         }
     }
@@ -291,15 +291,15 @@ if (-not $WhatIfPreference) {
 try {
     $computerSystem = Get-CimInstance Win32_ComputerSystem -ErrorAction SilentlyContinue
     if ($null -ne $computerSystem -and $computerSystem.PartOfDomain) {
-        Write-Warning "This machine is domain-joined. Group Policy may override changes made by Win11Debloat."
+        Write-Warning "Este computador pertence a um domínio. As políticas de grupo podem substituir as alterações do Win11Debloat."
     }
 }
 catch { }
 
 # Check if script has all required files
 if (-not ((Test-Path $script:DefaultSettingsFilePath) -and (Test-Path $script:AppsListFilePath) -and (Test-Path $script:RegfilesPath) -and (Test-Path $script:AssetsPath) -and (Test-Path $script:AppSelectionSchema) -and (Test-Path $script:ApplyChangesWindowSchema) -and (Test-Path $script:SharedStylesSchema) -and (Test-Path $script:BubbleHintSchema) -and (Test-Path $script:RestoreBackupWindowSchema) -and (Test-Path $script:FeaturesFilePath) -and (Test-Path $script:DefaultLanguagePath))) {
-    Write-Error "Win11Debloat is unable to find required files, please ensure all script files are present"
-    Write-Output "Press any key to exit..."
+    Write-Error "O Win11Debloat não encontrou arquivos necessários. Verifique se todos os arquivos do script estão presentes"
+    Write-Output "Pressione qualquer tecla para sair..."
     $null = [System.Console]::ReadKey()
     Exit 1
 }
@@ -310,15 +310,15 @@ try {
     $featuresData = Get-Content -Path $script:FeaturesFilePath -Raw | ConvertFrom-Json
     foreach ($feature in $featuresData.Features) {
         if ([string]::IsNullOrWhiteSpace([string]$feature.FeatureId) -or [string]::IsNullOrWhiteSpace([string]$feature.Label) -or [string]::IsNullOrWhiteSpace([string]$feature.ApplyText)) {
-            Write-Warning "Feature '$($feature.FeatureId)' is missing a FeatureId, Label, or ApplyText in Features.json and will be skipped."
+            Write-Warning "O recurso '$($feature.FeatureId)' não possui FeatureId, Label ou ApplyText em Features.json e será ignorado."
             continue
         }
         $script:Features[$feature.FeatureId] = $feature
     }
 }
 catch {
-    Write-Error "Failed to load feature info from Features.json file"
-    Write-Output "Press any key to exit..."
+    Write-Error "Falha ao carregar as informações dos recursos de Features.json"
+    Write-Output "Pressione qualquer tecla para sair..."
     $null = [System.Console]::ReadKey()
     Exit 1
 }
@@ -333,15 +333,15 @@ try {
     }
 }
 catch {
-    Write-Error "Unable to determine if WinGet is installed, winget command failed: $_"
+    Write-Error "Não foi possível verificar se o WinGet está instalado. Falha no comando winget: $_"
     $script:WingetInstalled = $false
 }
 
 # Show WinGet warning that requires user confirmation, Suppress confirmation if Silent parameter was passed
 if (-not $script:WingetInstalled -and -not $Silent) {
-    Write-Warning "WinGet is not installed or outdated, this may prevent Win11Debloat from removing certain apps"
+    Write-Warning "O WinGet não está instalado ou está desatualizado. Isso pode impedir a remoção de alguns aplicativos"
     Write-Output ""
-    Write-Output "Press any key to continue anyway..."
+    Write-Output "Pressione qualquer tecla para continuar mesmo assim..."
     $null = [System.Console]::ReadKey()
 }
 
@@ -465,6 +465,14 @@ $script:ModernStandbySupported = Test-ModernStandbySupport
 
 # Explicit -Language takes precedence over saved UI preferences and the system culture.
 Initialize-UiPreferences -Language $Language
+# Use the active catalog for terminal summaries and progress messages.
+foreach ($feature in $script:Features.Values) {
+    foreach ($field in @('Label', 'ApplyText', 'UndoLabel', 'ApplyUndoText')) {
+        if ($feature.PSObject.Properties[$field]) {
+            $feature.$field = Get-Translation -Key $feature.FeatureId -Field $field -Section Features
+        }
+    }
+}
 
 $script:Params = $PSBoundParameters
 $script:UndoParams = @{}
@@ -488,9 +496,9 @@ if (-not ($script:Params.ContainsKey("Verbose"))) {
     $ProgressPreference = 'SilentlyContinue'
 }
 else {
-    Write-Host "Verbose mode is enabled"
+    Write-Host "O modo de mensagens detalhadas está ativado"
     Write-Output ""
-    Write-Output "Press any key to continue..."
+    Write-Output "Pressione qualquer tecla para continuar..."
     $null = [System.Console]::ReadKey()
 
     $ProgressPreference = 'Continue'
@@ -501,7 +509,7 @@ if ($script:Params.ContainsKey("Sysprep")) {
 
     # Exit script if run in Sysprep mode on Windows 10
     if ($WinVersion -lt 22000) {
-        Write-Error "Win11Debloat Sysprep mode is not supported on Windows 10"
+        Write-Error "O modo Sysprep do Win11Debloat não é compatível com o Windows 10"
         Wait-ForKeyPress -ExitCode 1
     }
 }
@@ -534,7 +542,7 @@ if ((-not $script:Params.Count) -or $RunDefaults -or $RunDefaultsLite -or $RunSa
     elseif ($RunSavedSettings) {
         if (-not (Test-Path $script:SavedSettingsFilePath)) {
             Write-CliHeader 'Custom Mode'
-            Write-Error "Unable to find LastUsedSettings.json file, no changes were made"
+            Write-Error "O arquivo LastUsedSettings.json não foi encontrado. Nenhuma alteração foi feita"
             Wait-ForKeyPress -ExitCode 1
         }
 
@@ -571,11 +579,11 @@ if ((-not $script:Params.Count) -or $RunDefaults -or $RunDefaultsLite -or $RunSa
                 Exit
             }
             catch {
-                Write-Warning "The graphical interface could not start: $($_.Exception.Message)"
+                Write-Warning "Não foi possível iniciar a interface gráfica: $($_.Exception.Message)"
                 Write-Verbose "GUI Failure details: $($_.Exception.ToString())"
                 if (-not $Silent) {
                     Write-Host ""
-                    Write-Host "Press any key to continue in CLI mode..."
+                    Write-Host "Pressione qualquer tecla para continuar no modo de linha de comando..."
                     $null = [System.Console]::ReadKey()
                 }
 
@@ -609,7 +617,7 @@ else {
 # If the number of keys in ControlParams equals the number of keys in Params then no modifications/changes were selected
 #  or added by the user, and the script can exit without making any changes.
 if (($controlParamsCount -eq $script:Params.Keys.Count) -or ($script:Params.Keys.Count -eq 1 -and ($script:Params.Keys -contains 'CreateRestorePoint' -or $script:Params.Keys -contains 'Apps'))) {
-    Write-Output "The script completed without making any changes."
+    Write-Output "O script foi concluído sem fazer alterações."
     Wait-ForKeyPress
 }
 
@@ -618,7 +626,7 @@ if (($controlParamsCount -eq $script:Params.Keys.Count) -or ($script:Params.Keys
 Invoke-AllChanges
 
 if ($script:CancelRequested) {
-    Write-Warning "Script execution was cancelled by the user. Any remaining changes were not applied."
+    Write-Warning "A execução foi cancelada pelo usuário. As alterações restantes não foram aplicadas."
     Wait-ForKeyPress
 }
 
@@ -630,6 +638,6 @@ if (-not ($script:Params.ContainsKey("Sysprep") -or $script:Params.ContainsKey("
 Write-Output ""
 Write-Output ""
 Write-Output ""
-Write-Output "Script completed! Please check above for any errors."
+Write-Output "Script concluído! Confira acima se ocorreu algum erro."
 
 Wait-ForKeyPress

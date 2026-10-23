@@ -26,7 +26,6 @@ function Show-MainWindow {
 
     $mainBorder = $window.FindName('MainBorder')
     $titleBarBackground = $window.FindName('TitleBarBackground')
-    $kofiBtn = $window.FindName('KofiBtn')
     $menuBtn = $window.FindName('MenuBtn')
     $closeBtn = $window.FindName('CloseBtn')
     $menuDocumentation = $window.FindName('MenuDocumentation')
@@ -85,7 +84,6 @@ function Show-MainWindow {
     })
 
     # ---- Menu/button event wiring ----
-    $kofiBtn.Add_Click({ Start-Process "https://ko-fi.com/raphire" })
     $window.FindName('SettingsBtn').Add_Click({ Open-MainWindowSettings -Window $window })
 
     $menuBtn.Add_Click({
